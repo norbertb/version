@@ -10,7 +10,7 @@ class Rake::VersionTask < Rake::TaskLib
   # when true, commits version bumps automatically (default: autodetect)
   attr_accessor :with_git
   
-  # when true, tags version bumps automatically (default: false)
+  # when true, tags version bumps automatically (default: true)
   attr_accessor :with_git_tag
   
   # when set with a Gem::Specification, automatically emits an updated
@@ -24,6 +24,7 @@ class Rake::VersionTask < Rake::TaskLib
   def initialize(filename = 'VERSION')
     self.filename = filename
     self.with_git = File.exist?('.git')
+    self.with_git_tag = true
     
     yield(self) if block_given?
     

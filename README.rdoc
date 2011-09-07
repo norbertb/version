@@ -67,11 +67,10 @@ Now `rake -T version` will tell you what all you can do.
   $ rake version:bump:minor           # => 1.1.0
   $ cat VERSION                       # => 1.1.0
 
-The VersionTask can automatically manage git tagging for
-you, too.
+VersionTask automatically manages git tagging if  git is detected. To disable automatic tagging:
 
   Rake::VersionTask.new do |task|
-    task.with_git_tag = true
+    task.with_git_tag = false
   end
 
 And if you want the VersionTask to automatically emit updated gemspecs on
